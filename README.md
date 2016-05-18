@@ -1,11 +1,16 @@
 # personal-ansible
 
-Ansible playbook(s) for personal servers.
+Ansible playbook(s) for personal servers. They automate my (not terribly unique) routine for setting up a new Ubuntu server:
 
 * ‘common’ role: apply basic security hardening
-* ‘webserver’ role: install and configure websites (coming soon)
+* ‘webserver’ role: install and configure web server software *(coming soon)*
 
-Tried to follow best practices for securing credentials, file layout, etc.
+Many of the steps used in these playbooks are explained in more detail by these two posts:
+
+ * [My First 5 Minutes On A Server](https://plusbryan.com/my-first-5-minutes-on-a-server-or-essential-security-for-linux-servers) by Bryan Kennedy
+ * [How to Set Up Your Linode for Maximum Awesomeness](http://feross.org/how-to-setup-your-linode/) by Feross Aboukhadijeh
+
+I’m also making use of `ansible-vault` for keeping server credentials secure while still including them in the repo.
 
 ## Usage
 
