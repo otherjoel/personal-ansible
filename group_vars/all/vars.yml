@@ -1,0 +1,18 @@
+---
+UBUNTU_COMMON_ROOT_PASSWORD: "{{ vault_UBUNTU_COMMON_ROOT_PASSWORD }}"
+UBUNTU_COMMON_DEPLOY_PASSWORD: "{{ vault_UBUNTU_COMMON_DEPLOY_PASSWORD }}"
+UBUNTU_COMMON_LOGWATCH_EMAIL: "{{ vault_UBUNTU_COMMON_LOGWATCH_EMAIL }}"
+ubuntu_common_deploy_user_name: "{{ vault_ubuntu_common_deploy_user_name }}"
+ubuntu_common_deploy_public_keys:
+  - ~/.ssh/id_rsa.pub
+
+ubuntu_common_ssh_port: "{{ vault_ubuntu_common_ssh_port }}"
+ansible_port: "{{ vault_ubuntu_common_ssh_port }}"
+
+ansible_become_pass: "{{ vault_UBUNTU_COMMON_DEPLOY_PASSWORD_PLAIN }}"
+
+ubuntu_common_required_packages:
+  - ufw
+  - fail2ban
+  - unattended-upgrades
+  - logwatch

@@ -1,0 +1,12 @@
+---
+# This playbook is for running the first time, before the login user and ssh
+# port have been changed.
+
+# Don’t forget to override the ssh port on the command line: `-e "ansible_port=22"`
+# If you need to run on only ending host, use `-i "machine1,"` — note ending comma
+
+- hosts: all
+  remote_user: root
+  roles:
+    - common
+    - webserver
