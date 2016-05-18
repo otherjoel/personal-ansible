@@ -3,7 +3,6 @@ usage() { echo "Usage: ap [-c] [-i] [-h \"host1,host2\"]" [-p \"playbook.yml\"];
 initonce=0
 playbook_yml="site.yml"
 
-[ $# -eq 0 ] && usage
 while getopts "ich:p:" arg; do
   case $arg in
     i) # Initialize fresh VM(s)
