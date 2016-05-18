@@ -1,3 +1,9 @@
 ---
 - name: Restart ssh
   service: name=ssh state=restarted
+
+- name: restart fail2ban
+  service: name=fail2ban state=restarted
+
+- name: reload fail2ban
+  service: name=fail2ban state=reloaded

@@ -1,0 +1,47 @@
+# Fail2Ban configuration file.
+#
+# To avoid merges during upgrades this file contains only
+# changes from /etc/fail2ban/jail.conf
+#
+
+# The DEFAULT allows a global definition of the options. They can be overridden
+# in each jail afterwards.
+
+[DEFAULT]
+
+# "ignoreip" can be an IP address, a CIDR mask or a DNS host
+ignoreip = {{ fail2ban.config.ignoreip }}
+bantime  = {{ fail2ban.config.bantime }}
+maxretry = {{ fail2ban.config.maxretry }}
+
+# Destination email address used solely for the interpolations in
+# jail.{conf,local} configuration files.
+destemail = {{ ubuntu_common_deploy_user_name }}@localhost
+
+#
+# JAILS
+#
+
+[ssh]
+
+enabled  = true
+port     = {{ ubuntu_common_ssh_port }}
+filter   = sshd
+logpath  = /var/log/auth.log
+maxretry = {{ fail2ban.config.maxretry }}
+
+[ssh-ddos]
+
+enabled  = true
+port     = {{ ubuntu_common_ssh_port }}
+filter   = sshd-ddos
+logpath  = /var/log/auth.log
+maxretry = {{ fail2ban.config.maxretry }}
+
+[pure-ftpd]
+
+enabled  = true
+port     = ftp,ftp-data,ftps,ftps-data
+filter   = pure-ftpd
+logpath  = /var/log/syslog
+maxretry = {{ fail2ban.config.maxretry }}

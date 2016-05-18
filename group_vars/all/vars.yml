@@ -16,3 +16,9 @@ ubuntu_common_required_packages:
   - fail2ban
   - unattended-upgrades
   - logwatch
+
+fail2ban:
+  config:
+    ignoreip: 127.0.0.1/8
+    bantime: 3600
+    maxretry: 3
