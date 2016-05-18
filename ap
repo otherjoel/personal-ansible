@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+usage() { echo "Usage: ap [-c] [-i] [-h \"host1,host2\"]" [-p \"playbook.yml\"]; exit 1; }
+initonce=0
+playbook_yml="site.yml"
+
+[ $# -eq 0 ] && usage
+while getopts "ich:p:" arg; do
+  case $arg in
+    i) # Initialize fresh VM(s)
+      initonce=1
+      playbook_yml="site-initonce.yml"
+      ;;
+    h) # Specify host or hosts (comma-separated)
+      host_list=${OPTARG}
+      ;;
+    c) # Specify "Check" environment
+      check_flag="-C"
+      ;;
+    p) # Specify playbook
+      playbook_yml=${OPTARG}
+      ;;
+    *)
+      usage
+      ;;
+  esac
+done
+
+if [ $initonce = 1 ] ; then
+  if [ -z $host_list ]; then
+    cmd_str="ansible-playbook $playbook_yml $check_flag -e \"ansible_port=22\" --ask-vault-pass"
+  else
+    cmd_str="ansible-playbook $playbook_yml $check_flag -e \"ansible_port=22\" -i \"$host_list,\" --ask-vault-pass"
+  fi
+else
+  if [ -z $host_list ]; then
+    cmd_str="ansible-playbook $playbook_yml $check_flag --ask-vault-pass"
+  else
+    cmd_str="ansible-playbook $playbook_yml $check_flag -i \"$host_list,\" --ask-vault-pass"
+  fi
+fi
+
+echo Running: $cmd_str
+eval $cmd_str
