@@ -74,3 +74,13 @@
               line="PermitRootLogin no"
               state=present
   notify: Restart ssh
+
+- name: Set system to reboot when out of memory
+  lineinfile:
+    dest: /etc/sysctl.conf
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: present
+  with_items:
+    - { regexp: '^vm.panic_on_oom', line: 'vm.panic_on_oom=1' }
+    - { regexp: '^kernel.panic', line: 'kernel.panic=10' }
