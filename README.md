@@ -89,3 +89,12 @@ Folders or files      |Description
 `webservers.yml`      |Playbook for web servers
 `group_vars/all/*.yml`|These vars are automatically loaded for all playbooks
 `roles/`              |Any `main.yml` files are added to specific parts of the play (tasks, handlers, etc)  automatically for that role. Any files under `role/x/files/` can be referenced without specifying a path. ([more info](http://docs.ansible.com/ansible/playbooks_roles.html#roles))
+
+## Planned Improvements
+
+* MySQL and Apache installation and configuration
+   * Currently working on a best-practices MySQL configuration
+* Tasks for installing and renewing Let’s Encrypt SSL certs
+   * May wait until EFF Certbot client is out of beta
+   * Dependency installation
+* Tasks for restoring specific sites from backup
