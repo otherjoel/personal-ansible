@@ -6,7 +6,7 @@ ubuntu_common_deploy_user_name: "{{ vault_ubuntu_common_deploy_user_name }}"
 ubuntu_common_deploy_public_keys:
   - ~/.ssh/id_rsa.pub
 
-mysql_root_password: "{{ vault_mysql_root_password }}"
+mysql_root_password_plain: "{{ vault_mysql_root_password_plain }}"
 mysql_deploy_user_name: "{{ vault_mysql_deploy_user_name }}"
 mysql_deploy_user_password_plain: "{{ vault_mysql_deploy_user_password_plain }}"
 
