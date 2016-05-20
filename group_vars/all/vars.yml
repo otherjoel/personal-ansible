@@ -20,6 +20,7 @@ ubuntu_common_required_packages:
   - fail2ban
   - unattended-upgrades
   - logwatch
+  - build-essential
 
 fail2ban:
   config:
