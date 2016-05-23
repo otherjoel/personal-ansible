@@ -41,5 +41,8 @@
 - name: Create MySQL deploy DB user
   mysql_user: name={{ mysql_deploy_user_name }} password={{ mysql_deploy_user_password_plain }} priv=*.*:ALL host='%' state=present
 
+- name: Optimize all tables weekly
+  cron: name="Optimize MySQL tables" weekday="0" hour="3" minute="0" job="mysqlcheck -o -A"
+
 #- name: Create Application Database
 #  mysql_db: name={{ dbname }} state=present
