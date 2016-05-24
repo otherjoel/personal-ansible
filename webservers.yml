@@ -1,9 +1,9 @@
 ---
-- hosts: webservers
+- hosts: all
   remote_user: "{{ ubuntu_common_deploy_user_name }}"
   become: yes
   become_method: sudo
 
   roles:
     - common
-    - webserver
+    - mysql
