@@ -1,0 +1,8 @@
+---
+# See https://galaxy.ansible.com/geerlingguy/apache/
+apache_remove_default_vhost: true
+apache_vhosts:
+  - servername: "test.joeldueck.com"
+    documentroot: "/home/{{ ubuntu_common_deploy_user_name }}/www/test.joeldueck.com"
+    serveralias: "test.joeldueck.com"
+    serveradmin: "joel@jdueck.net"

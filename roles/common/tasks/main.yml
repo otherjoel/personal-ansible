@@ -32,7 +32,11 @@
   ufw: state=enabled policy=deny
 
 - name: Allow ssh traffic
-  ufw: rule=allow port={{ ubuntu_common_ssh_port }} proto=tcp
+  ufw: rule=allow port={{ item }} proto=tcp
+  with_items:
+    - "{{ ubuntu_common_ssh_port }}"
+    - http
+    - https
 
 - name: Install fail2ban config
   template: src=jail.local.j2 dest=/etc/fail2ban/jail.local
