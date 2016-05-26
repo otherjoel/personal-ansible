@@ -95,8 +95,6 @@ Folders or files      |Description
 
 ## Planned Improvements
 
-* MySQL and Apache installation and configuration
-   * Currently working on a best-practices MySQL configuration
 * Tasks for installing and renewing Let’s Encrypt SSL certs
    * May wait until EFF Certbot client is out of beta
    * Dependency installation
