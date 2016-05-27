@@ -36,7 +36,7 @@ To test without actually performing any changes, use the `-C` flag.
 
 Because all of that is a bit annoying to type, I’ve created a basic bash script `ap` to make it simpler.
 
-    Usage: ap [-c] [-i] [-h \"host1,host2\"]" [-p \"playbook.yml\"]
+    Usage: ap [-c] [-i] [-h host1,host2]" [-p playbook.yml]
 
       -c        Runs ansible-playbook in Check mode (-C)
       -i        Initialize (use site-initonce.yml w/port 22 and root login)
@@ -46,13 +46,13 @@ Because all of that is a bit annoying to type, I’ve created a basic bash scrip
 Example usage:
 
     ./ap -i                # Runs site-initonce.yml with port 22
-    ./ap -i -h "host1"     #  -- same as above, limit to one host
+    ./ap -i -h host1       #  -- same as above, limit to one host
     ./ap                   # Runs site.yml
-    ./ap -h "host1,host2"  #  -- same as above, limit to two hosts
+    ./ap -h host1,host2    #  -- same as above, limit to two hosts
 
-    ./ap -p "web.yml"      # Specifies a playbook
+    ./ap -p web.yml        # Specifies a playbook
     ./ap -c                # Runs ansible in Check mode (-C)
-    ./ap -ci -h "host1"
+    ./ap -ci -h host1      # Check mode, init playbook...you get the idea
 
 ## Setup
 
