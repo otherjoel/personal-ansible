@@ -70,12 +70,14 @@ These playbooks assume:
 2. Install roles from galaxy (these get put into `/usr/local/etc/ansible`):
     * `ansible-galaxy install geerlingguy.apache`
 
+3. Ensure `~/.ssh/id_rsa.pub` exists (generate if not)
+
 3. Create the inventory of your servers:
     * `mkdir -p /usr/local/etc/ansible`
     * Create `/usr/local/etc/ansible/hosts` and add your servers ([instructions](http://docs.ansible.com/ansible/intro_inventory.html))
     * You may wish to `ln -s /usr/local/etc/ansible/hosts ./inv` for convenient editing of the inventory
 
-4. Ensure `~/.ssh/id_rsa.pub` exists (generate if not)
+4. Edit vars files under `group_vars/all` to match your setup
 
 5. Set variables for passwords, port numbers, etc. with `ansible-vault edit group_vars/all/secret.yml`
     * Password vars with a `_PLAIN` suffix are the plain text of the password; other password vars are **hashes of the password**. You will need to generate these hashes using [one of these methods](http://docs.ansible.com/ansible/faq.html#how-do-i-generate-crypted-passwords-for-the-user-module).
