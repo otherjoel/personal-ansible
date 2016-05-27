@@ -1,10 +1,4 @@
 ---
 # See https://galaxy.ansible.com/geerlingguy/apache/
-# Note that the apache role does not create the doc root folders specified here,
-# it only configures Apache to refer to them.
-
 apache_remove_default_vhost: true
-apache_vhosts:
-  - servername: "test.joeldueck.com"
-    documentroot: "/home/{{ ubuntu_common_deploy_user_name }}/www/test.joeldueck.com/web/public"
-    serveralias: "test.joeldueck.com"
+apache_create_vhosts: false

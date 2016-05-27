@@ -1,0 +1,29 @@
+---
+# Configure individual websites
+
+- name: Install vhost for each website
+  template: src=vhost.conf dest=/etc/apache2/sites-available/{{ item }}.conf
+  with_items: "{{ web_domains }}"
+
+- name: Enable vhost for each website
+  file: src=/etc/apache2/sites-available/{{ item }}.conf
+        dest=/etc/apache2/sites-enabled/{{ item }}.conf
+        state=link
+  with_items: "{{ web_domains }}"
+  notify: Restart apache
+
+- name: Create website public folders
+  file: path=/home/{{ ubuntu_common_deploy_user_name }}/www/{{ item }}/web/public/
+        state=directory
+        mode=0755
+        owner={{ ubuntu_common_deploy_user_name }}
+        group={{ ubuntu_common_deploy_user_name }}
+  with_items: "{{ web_domains }}"
+
+- name: Create website log folders
+  file: path=/home/{{ ubuntu_common_deploy_user_name }}/www/{{ item }}/logs/
+        state=directory
+        mode=0755
+        owner={{ ubuntu_common_deploy_user_name }}
+        group={{ ubuntu_common_deploy_user_name }}
+  with_items: "{{ web_domains }}"
