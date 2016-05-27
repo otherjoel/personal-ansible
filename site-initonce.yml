@@ -9,4 +9,7 @@
   remote_user: root
   roles:
     - common
-    - webserver
+    - mysql
+    - geerlingguy.apache
+    - websites
+    - certbot
