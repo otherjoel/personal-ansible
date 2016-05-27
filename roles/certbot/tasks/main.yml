@@ -17,5 +17,13 @@
     - ca-certificates
     - apache2
 
-#- name: Get certs for SSL domains
-#  command: /home/{{ ubuntu_common_deploy_user_name }}/certbot-auto --apache --noninteractive --domains {{ web_domains|join(',') }} --test-cert
+- name: Check certbot installation status
+  stat: path=/etc/letsencrypt/options-ssl-apache.conf
+  register: certbotconf
+
+- name: Run certbot initial installation
+  command: /home/{{ ubuntu_common_deploy_user_name }}/certbot-auto --noninteractive
+  when: certbotconf.stat.exists == False
+
+- name: Get certs for SSL domains
+  command: /home/{{ ubuntu_common_deploy_user_name }}/certbot-auto --apache --noninteractive --domains {{ web_domains|join(',') }} --test-cert --agree-tos --email {{ server_admin_email }} --redirect
