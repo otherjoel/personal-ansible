@@ -1,0 +1,21 @@
+---
+- name: Certbot install script installed
+  get_url: url=https://dl.eff.org/certbot-auto dest=/home/{{ ubuntu_common_deploy_user_name }}/certbot-auto mode=a+x
+
+- name: Operating system dependencies
+  apt: name={{ item }} state=present
+  with_items:
+    - build-essential
+    - libssl-dev
+    - libffi-dev
+    - python-dev
+    - git
+    - python-pip
+    - python-virtualenv
+    - dialog
+    - libaugeas0
+    - ca-certificates
+    - apache2
+
+#- name: Get certs for SSL domains
+#  command: /home/{{ ubuntu_common_deploy_user_name }}/certbot-auto --apache --noninteractive --domains {{ web_domains|join(',') }} --test-cert
