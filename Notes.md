@@ -13,3 +13,6 @@ The [docs for the `get_url` module](http://docs.ansible.com/ansible/get_url_modu
 
 How do I convert a list variable into a comma-separated string for use as a command-line argument?
 : Like this: `{{ listvar|join(',') }}`  ([Source](https://www.sbarjatiya.com/notes_wiki/index.php/Convert_list_variable_to_comma_separated_list_in_ansible))
+
+Can a role refer to a handler from another role?
+: See <http://stackoverflow.com/questions/22649333/ansible-notify-handlers-in-another-role>. The simplest way is if you are in a play that includes both roles, then any of the included roles can refer to any other role’s handlers. I ended up not going down that road, however.
