@@ -24,7 +24,7 @@ To run against a *single VM* for the first time (note ending comma)
 
     ansible-playbook site-initonce.yml -i "machine1," -e "ansible_port=22" --ask-vault-pass
 
-Because this will disable root and password use in ssh as well change the ssh port, you should only be able to use this once.
+Because this will disable root and password use in ssh as well change the ssh port, you should only be able to (and only need to) use this once.
 
 For all subsequent runs to the same server(s):
 
