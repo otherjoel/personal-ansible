@@ -97,7 +97,5 @@ Folders or files      |Description
 
 ## Planned Improvements
 
-* Tasks for installing and renewing Let’s Encrypt SSL certs
-   * May wait until EFF Certbot client is out of beta
-   * Dependency installation
-* Tasks for restoring specific sites from backup
+* PHP and PHP-FM
+* Logrotate
