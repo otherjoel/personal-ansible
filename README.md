@@ -2,13 +2,14 @@
 
 Ansible playbook(s) for personal servers. They automate my (not terribly unique) routine for setting up a new Ubuntu server:
 
-* ‘common’ role: apply basic security hardening
-* ‘webserver’ role: install and configure web server software *(coming soon)*
-
-Many of the steps used in these playbooks are explained in more detail by these two posts:
-
- * [My First 5 Minutes On A Server](https://plusbryan.com/my-first-5-minutes-on-a-server-or-essential-security-for-linux-servers) by Bryan Kennedy
- * [How to Set Up Your Linode for Maximum Awesomeness](http://feross.org/how-to-setup-your-linode/) by Feross Aboukhadijeh
+1. `common` role: apply basic security hardening
+    * Many of the steps used in this role are explained in more detail by these two posts:
+        - [My First 5 Minutes On A Server](https://plusbryan.com/my-first-5-minutes-on-a-server-or-essential-security-for-linux-servers) by Bryan Kennedy
+        - [How to Set Up Your Linode for Maximum Awesomeness](http://feross.org/how-to-setup-your-linode/) by Feross Aboukhadijeh
+2. `mysql` role: install and secure mysql
+3. Uses roles imported from galaxy for configuring Apache and PHP (see [Setup](#setup) below)
+4. `websites` role: Set up and enable individual sites in Apache
+5. `certbot` role: Install the [EFF Certbot](https://certbot.eff.org) client (aka letsencrypt) and enable individual SSL certificates for all websites
 
 I’m also making use of `ansible-vault` for keeping server credentials secure while still including them in the repo.
 
@@ -68,7 +69,7 @@ These playbooks assume:
 1. Install ansible: `brew install ansible`
 
 2. Install roles from galaxy (these get put into `/usr/local/etc/ansible`):
-    * `ansible-galaxy install geerlingguy.apache`
+        `# ansible-galaxy install -r galaxy-roles.yml`
 
 3. Ensure `~/.ssh/id_rsa.pub` exists (generate if not)
 
@@ -89,6 +90,7 @@ These playbooks assume:
 Folders or files      |Description
 ----------------------|------------
 `ap`                  |Shortcut script for using `ansible-playbook` without having to type out all the options (see above)
+`galaxy-roles.yml`    |Roles to install from galaxy
 `site-initonce.yml`   |Playbook for new VMs (root login)
 `site.yml`            |Playbook for all servers
 `webservers.yml`      |Playbook for web servers
