@@ -11,5 +11,8 @@
     - common
     - mysql
     - geerlingguy.apache
+    - geerlingguy.php
+    - geerlingguy.apache-php-fpm
+    - geerlingguy.php-mysql
     - websites
     - certbot
