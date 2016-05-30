@@ -15,6 +15,12 @@
               line="{{ ubuntu_common_deploy_user_name }} ALL=(ALL) ALL"
               state=present
 
+- name: Set fully qualified domain name (FQDN)
+  lineinfile: dest=/etc/hosts
+              regexp="{{ ansible_host }}"
+              line="{{ ansible_host }}   {{ server_fqdn }}"
+              state=present
+
 - name: Add php7 Repo (needed for Ubuntu 14.04)
   apt_repository: repo='ppa:ondrej/php'
 
