@@ -1,3 +1,4 @@
 - src: geerlingguy.apache
 - src: geerlingguy.php
 - src: geerlingguy.apache-php-fpm
+- src: geerlingguy.php-mysql
