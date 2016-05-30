@@ -22,8 +22,11 @@
   register: certbotconf
 
 - name: Run certbot initial installation
-  command: /home/{{ ubuntu_common_deploy_user_name }}/certbot-auto --noninteractive
+  command: /home/{{ ubuntu_common_deploy_user_name }}/certbot-auto --noninteractive --apache
+  ignore_errors: yes
   when: certbotconf.stat.exists == False
 
 - name: Get certs for SSL domains
-  command: /home/{{ ubuntu_common_deploy_user_name }}/certbot-auto --apache --noninteractive --domains {{ web_domains|join(',') }} --test-cert --agree-tos --email {{ server_admin_email }} --redirect
+  command: /home/{{ ubuntu_common_deploy_user_name }}/certbot-auto --apache --noninteractive --domains {{ item }} --test-cert --agree-tos --email {{ server_admin_email }}
+  with_items: "{{ web_domains }}"
+  notify: Restart apache
