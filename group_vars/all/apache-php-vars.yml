@@ -2,3 +2,6 @@
 # See https://galaxy.ansible.com/geerlingguy/apache/
 apache_remove_default_vhost: true
 apache_create_vhosts: false
+
+# See https://galaxy.ansible.com/geerlingguy/php/
+php_enable_php_fpm: true
