@@ -15,6 +15,9 @@
               line="{{ ubuntu_common_deploy_user_name }} ALL=(ALL) ALL"
               state=present
 
+- name: Add php7 Repo (needed for Ubuntu 14.04)
+  apt_repository: repo='ppa:ondrej/php'
+
 - name: Update APT package cache
   apt: update_cache=yes cache_valid_time=3600
 
