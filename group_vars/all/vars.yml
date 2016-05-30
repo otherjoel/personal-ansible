@@ -1,11 +1,12 @@
 ---
 UBUNTU_COMMON_ROOT_PASSWORD: "{{ vault_UBUNTU_COMMON_ROOT_PASSWORD }}"
 UBUNTU_COMMON_DEPLOY_PASSWORD: "{{ vault_UBUNTU_COMMON_DEPLOY_PASSWORD }}"
-UBUNTU_COMMON_LOGWATCH_EMAIL: "{{ vault_UBUNTU_COMMON_LOGWATCH_EMAIL }}"
+UBUNTU_COMMON_LOGWATCH_EMAIL: "{{ vault_server_admin_email }}"
 ubuntu_common_deploy_user_name: "{{ vault_ubuntu_common_deploy_user_name }}"
 ubuntu_common_deploy_public_keys:
   - ~/.ssh/id_rsa.pub
 server_admin_email: "{{ vault_server_admin_email }}"
+server_fqdn: "{{ inventory_hostname }}.{{ vault_server_fqdn_domain }}"
 
 mysql_root_password_plain: "{{ vault_mysql_root_password_plain }}"
 mysql_deploy_user_name: "{{ vault_mysql_deploy_user_name }}"
