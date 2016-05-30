@@ -29,5 +29,4 @@ fail2ban:
     bantime: 3600
     maxretry: 3
 
-web_domains:
-    - test.joeldueck.com
+web_domains: "{{ vault_web_domains }}"
